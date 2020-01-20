@@ -6,6 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Date;
 
+import java.util.List;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+
 @Entity
 public class Wizard {
 
@@ -18,6 +22,11 @@ public class Wizard {
     private String birthPlace;
     private String biography;
     private boolean muggle;
+
+
+    @ManyToOne
+    @JoinColumn(name = "school_id")
+    private School school;
 
     public Wizard() {
     }
@@ -77,4 +86,15 @@ public class Wizard {
     public void setMuggle(boolean muggle) {
         this.muggle = muggle;
     }
+
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
+    }
+
+
+
 }
